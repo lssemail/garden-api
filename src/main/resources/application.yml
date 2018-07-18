@@ -1,0 +1,31 @@
+spring:
+  thymeleaf:
+    cache: false
+  profiles:
+    active: production
+  devtools:
+    restart:
+      exclude: /static/**,/templates/**
+      enabled: true
+    ivereload:
+      enabled: true
+
+server:
+  port: 8000
+logging:
+  level:
+    root: warn
+    org:
+      springframework:
+        security: debug
+  path: /var/logs/
+  file: book.log
+
+amazon:
+  associateId: habuma-20
+
+management:
+  security:
+    enabled: true
+
+
