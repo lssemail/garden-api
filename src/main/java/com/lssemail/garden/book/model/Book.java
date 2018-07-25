@@ -8,6 +8,7 @@ public class Book {
     private String title;
     private String author;
     private String description;
+    private String userId;
 
     public Long getId() {
         return id;
@@ -55,6 +56,14 @@ public class Book {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }
 

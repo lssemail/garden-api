@@ -14,6 +14,11 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="com/lssemail/garden/book/mapper/BookXmlMapper.xml"/>
+        <mapper resource="com/lssemail/garden/book/mapper/BookMapperXml.xml"/>
+        <mapper resource="com/lssemail/garden/book/mapper/AuthorMapper.xml"/>
+        <mapper resource="com/lssemail/garden/book/mapper/BlogMapper.xml"/>
+        <mapper resource="com/lssemail/garden/book/mapper/PostTagMapper.xml"/>
+        <mapper resource="com/lssemail/garden/book/mapper/TagMapper.xml"/>
+        <mapper resource="com/lssemail/garden/book/mapper/PostMapper.xml"/>
     </mappers>
 </configuration>

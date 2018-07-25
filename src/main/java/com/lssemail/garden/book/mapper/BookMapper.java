@@ -12,7 +12,7 @@ public interface BookMapper {
     @Select("select * from book where id = #{id}")
     Book findBookById(@Param("id") Long id);
 
-    //@Insert("insert into book(id, reader, title) values (#{id}, #{reader}, #{title})")
+    @Insert("insert into book(id, reader, title) values (#{id}, #{reader}, #{title})")
     void insert(Book book);
 
 }

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lssemail.garden.book.mapper.PostMapper">
+  <resultMap id="BaseResultMap" type="com.lssemail.garden.book.model.Post">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="blog_id" jdbcType="INTEGER" property="blogId" />
+    <result column="author_id" jdbcType="INTEGER" property="author_id" />
+    <result column="created_on" jdbcType="DATE" property="createdOn" />
+    <result column="section" jdbcType="VARCHAR" property="section" />
+    <result column="subject" jdbcType="VARCHAR" property="subject" />
+    <result column="draft" jdbcType="VARCHAR" property="draft" />
+    <result column="body" jdbcType="VARCHAR" property="body" />
+  </resultMap>
+  <insert id="insert" parameterType="com.lssemail.garden.book.model.Post">
+    insert into post (id, blog_id, author_id, 
+      created_on, section, subject, 
+      draft, body)
+    values (#{id,jdbcType=INTEGER}, #{blog_id,jdbcType=INTEGER}, #{author_id,jdbcType=INTEGER},
+      #{created_on,jdbcType=DATE}, #{section,jdbcType=VARCHAR}, #{subject,jdbcType=VARCHAR},
+      #{draft,jdbcType=VARCHAR}, #{body,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lssemail.garden.book.model.Post">
+    insert into post
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="blogId != null">
+        blog_id,
+      </if>
+      <if test="author_id != null">
+        author_id,
+      </if>
+      <if test="createdOn != null">
+        created_on,
+      </if>
+      <if test="section != null">
+        section,
+      </if>
+      <if test="subject != null">
+        subject,
+      </if>
+      <if test="draft != null">
+        draft,
+      </if>
+      <if test="body != null">
+        body,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="blogId != null">
+        #{blogId,jdbcType=INTEGER},
+      </if>
+      <if test="author_id != null">
+        #{author_id,jdbcType=INTEGER},
+      </if>
+      <if test="createdOn != null">
+        #{createdOn,jdbcType=DATE},
+      </if>
+      <if test="section != null">
+        #{section,jdbcType=VARCHAR},
+      </if>
+      <if test="subject != null">
+        #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="draft != null">
+        #{draft,jdbcType=VARCHAR},
+      </if>
+      <if test="body != null">
+        #{body,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

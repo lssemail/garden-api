@@ -31,4 +31,13 @@ public class Blog {
     public void setAuthor_id(Integer author_id) {
         this.author_id = author_id;
     }
+
+    @Override
+    public String toString() {
+        return "Blog{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", author_id=" + author_id +
+                '}';
+    }
 }
