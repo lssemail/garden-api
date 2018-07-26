@@ -6,26 +6,32 @@
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="author_id" jdbcType="INTEGER" property="author_id" />
   </resultMap>
-  <resultMap id="DetailedBlogResultMap" type="com.lssemail.garden.book.model.Blog">
+  <resultMap id="DetailedBlogResultMap" type="com.lssemail.garden.book.model.BlogDTO">
     <constructor>
       <idArg column="blog_id" javaType="int"/>
     </constructor>
     <result property="title" column="blog_title"/>
     <association property="author" javaType="com.lssemail.garden.book.model.Author">
-      <id property="id" column="author_id"/>
+      <id property="id" column="blog_author_id"/>
       <result property="username" column="author_username"/>
       <result property="password" column="author_password"/>
       <result property="email" column="author_email"/>
     </association>
-    <collection property="posts" ofType="com.lssemail.garden.book.model.Post">
+    <collection property="posts" ofType="com.lssemail.garden.book.model.PostDTO">
       <id property="id" column="post_id"></id>
       <result property="subject" column="post_subject"/>
+      <result property="blog_id" column="post_blog_id"/>
+      <result property="created_on" column="post_created_on"/>
       <association property="author" javaType="com.lssemail.garden.book.model.Author"/>
       <collection property="comments" ofType="com.lssemail.garden.book.model.Comment">
         <id property="id" column="comment_id"></id>
+        <result property="post_id" column="comment_post_id"/>
+        <result property="name" column="comment_name"/>
+        <result property="comment" column="comment_text"/>
       </collection>
       <collection property="tags" ofType="com.lssemail.garden.book.model.Tag">
         <id property="id" column="tag_id"/>
+        <result property="name" column="tag_name"/>
       </collection>
     </collection>
   </resultMap>
@@ -39,7 +45,7 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
 
-  <select id="selectBlogDetails" parameterType="java.lang.Integer" resultMap="detailedBlogResultMap">
+  <select id="selectBlogDetails" parameterType="java.lang.Integer" resultMap="DetailedBlogResultMap">
     select
     B.id as blog_id,
     B.title as blog_title,
@@ -70,5 +76,6 @@
     left outer join Tag T on PT.tag_id = T.id
     where B.id = #{id}
   </select>
+  <cache />
 
 </mapper>

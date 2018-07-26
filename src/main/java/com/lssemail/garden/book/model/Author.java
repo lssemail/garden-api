@@ -1,6 +1,8 @@
 package com.lssemail.garden.book.model;
 
-public class Author {
+import java.io.Serializable;
+
+public class Author implements Serializable {
 
     private Integer id;
 

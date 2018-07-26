@@ -1,12 +1,17 @@
 package com.lssemail.garden.book.model;
 
-public class Blog {
+import java.io.Serializable;
+import java.util.List;
+
+public class BlogDTO implements Serializable {
 
     private Integer id;
 
     private String title;
 
-    private Integer author_id;
+    private Author author;
+
+    private List<PostDTO> posts;
 
     public Integer getId() {
         return id;
@@ -24,24 +29,32 @@ public class Blog {
         this.title = title;
     }
 
-    public Integer getAuthor_id() {
-        return author_id;
+    public Author getAuthor() {
+        return author;
     }
 
-    public void setAuthor_id(Integer author_id) {
-        this.author_id = author_id;
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
     @Override
     public String toString() {
-        return "Blog{" +
+        return "BlogDTO{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", author_id=" + author_id +
+                ", author=" + author +
                 '}';
     }
 
-    public Blog(Integer id) {
+    public BlogDTO(Integer id) {
         this.id = id;
+    }
+
+    public List<PostDTO> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<PostDTO> posts) {
+        this.posts = posts;
     }
 }

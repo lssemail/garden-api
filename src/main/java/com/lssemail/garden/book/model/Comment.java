@@ -1,6 +1,8 @@
 package com.lssemail.garden.book.model;
 
-public class Comment {
+import java.io.Serializable;
+
+public class Comment implements Serializable {
 
     private Integer id;
 

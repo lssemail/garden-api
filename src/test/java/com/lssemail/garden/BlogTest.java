@@ -1,6 +1,7 @@
 package com.lssemail.garden;
 
 import com.lssemail.garden.book.model.Blog;
+import com.lssemail.garden.book.model.BlogDTO;
 import com.lssemail.garden.book.utils.MybatisUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
@@ -14,7 +15,7 @@ public class BlogTest {
     public void select(){
 
         SqlSession session = MybatisUtil.openSession();
-        Blog blog = session.selectOne("com.lssemail.garden.book.mapper.BlogMapper.selectByPrimaryKey", 1);
+        BlogDTO blog = session.selectOne("com.lssemail.garden.book.mapper.BlogMapper.selectBlogDetails", 1);
         System.out.println(blog.toString());
         session.close();
     }
