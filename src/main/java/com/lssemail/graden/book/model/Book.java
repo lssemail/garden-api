@@ -16,6 +16,9 @@ public class Book {
     private String title;
     private String author;
     private String description;
+    private Double price;
+    private Integer stock;
+    private Integer sales;
 
     public Long getId() {
         return id;
@@ -63,6 +66,30 @@ public class Book {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public Integer getStock() {
+        return stock;
+    }
+
+    public void setStock(Integer stock) {
+        this.stock = stock;
+    }
+
+    public Integer getSales() {
+        return sales;
+    }
+
+    public void setSales(Integer sales) {
+        this.sales = sales;
     }
 }
 
