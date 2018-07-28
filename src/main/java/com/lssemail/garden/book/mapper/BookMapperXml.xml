@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!--对应该实体类的结果集-->
+<mapper namespace="BookMapperXml" >
+    <resultMap id="BaseResultMap" type="com.lssemail.garden.book.model.Book" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="reader" property="reader" jdbcType="VARCHAR" />
+        <result column="isbn" property="isbn" jdbcType="VARCHAR" />
+        <result column="title" property="title" jdbcType="VARCHAR" />
+        <result column="author" property="author" jdbcType="VARCHAR" />
+        <result column="description" property="description" jdbcType="VARCHAR" />
+    </resultMap>
+    <!-- 该实体类的对象 可以用这种形式，在sql展示：                <include refid="Base_Column_List" />-->
+    <sql id="Base_Column_List" >
+        id, reader, isbn, title, author, description
+    </sql>
+    <!--通过主键查询-->
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        select
+        <include refid="Base_Column_List" />
+        from book
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+</mapper>
